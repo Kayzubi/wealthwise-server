@@ -7,6 +7,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const mongodburl = process.env.MONGODB_URL
+const port = Number(process.env.PORT) || 3000
 
 const app = express()
 
@@ -19,6 +20,6 @@ mongoose.connect(mongodburl)
 
 mongoose.connection.on('error', (error: Error) => console.log(error))
 
-app.listen(8000, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log('Server running on http://localhost:8000')
 })
